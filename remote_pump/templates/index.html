@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>物联网浇水系统</title>
+    <meta charset="utf-8">
+    <script>
+
+        function water() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send('water');
+            location.reload();
+        }
+        function stop() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send('stop');
+            location.reload();
+        }
+    </script>
+</head>
+
+<body>
+    <h1>远程浇水</h1>
+    <hr>
+    <h2 id="status">状态：{{ is_watering }}</h2>
+    <button id="water" onclick="water()">浇水</button>
+    <button id="stop" onclick="stop()">停止</button>
+</body>
